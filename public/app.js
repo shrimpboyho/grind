@@ -55,12 +55,12 @@ player.prototype.setY = function(y) {
 
 player.prototype.draw = function() {
     // player body
-    $("canvas").drawRect({
-        fillStyle: "#000",
-        x: this.x,
-        y: this.y,
-        width: 20,
-        height: 20,
+
+    $("canvas").drawImage({
+        source: "/sprites/original.png",
+        x: this.x, y: this.y,
+        width: 30,
+        height: 35,
         fromCenter: false
     });
 
@@ -68,8 +68,8 @@ player.prototype.draw = function() {
     $("canvas").drawText({
         fillStyle: "#999",
         strokeWidth: 2,
-        x: this.x + 10,
-        y: this.y + 25,
+        x: this.x + 15,
+        y: this.y + 35,
         fontSize: "10pt",
         fontfamily: "Trebuchet MS",
         text: this.username
