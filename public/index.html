@@ -1,0 +1,46 @@
+<html>
+
+<head>
+
+	<title>grind</title>
+	<style type="text/css">
+	canvas{
+	    height:90%;
+	    width:100%;
+	}
+	#chatMessageBox{
+	    height:90%;
+	    width:100%;
+	}
+	.ui-dialog-titlebar-close {
+  		visibility: hidden;
+	}
+	</style>
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"></link>
+</head>
+
+<body>
+	<canvas></canvas>
+	
+	<div id="chatMessageBoxWrapper" title= "Chat">
+	  	
+	  	<textarea style = "cursor: default;"id = "chatMessageBox" readonly></textarea>
+	</div>
+
+	<input id = "chatBox"></input>
+	<button id = "send">Send</button>
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script src="http://calebevans.me/projects/jcanvas/resources/jcanvas/jcanvas.min.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="blackmonkey.client.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<script src="app.js"></script>
+
+</html>
