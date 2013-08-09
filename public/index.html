@@ -5,16 +5,32 @@
 	<title>grind</title>
 	<style type="text/css">
 	canvas{
-	    height:90%;
+	    height:95%;
 	    width:100%;
 	}
 	#chatMessageBox{
-	    height:90%;
+	    height:85%;
 	    width:100%;
+	    font-size: 12px;
+	    min-height: 150px;
+	}
+	#chatBox{
+		font-size: 12px;
+	}
+	#send{
+		font-size: 12px;
 	}
 	.ui-dialog-titlebar-close {
   		visibility: hidden;
 	}
+	.transparent_class {
+        filter:alpha(opacity=50); /* for IE4 - IE7 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* IE8 */
+        -moz-opacity:0.5;
+        -khtml-opacity: 0.5;
+        opacity: 0.5;
+
+    }
 	</style>
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"></link>
 </head>
@@ -22,13 +38,14 @@
 <body>
 	<canvas></canvas>
 	
-	<div id="chatMessageBoxWrapper" title= "Chat">
+	<div id="chatMessageBoxWrapper">
 	  	
 	  	<textarea style = "cursor: default;"id = "chatMessageBox" readonly></textarea>
+	  	<input id = "chatBox"></input>
+		<button id = "send">Send</button>
 	</div>
 
-	<input id = "chatBox"></input>
-	<button id = "send">Send</button>
+	
 </body>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

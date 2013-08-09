@@ -87,6 +87,15 @@ document.onkeydown = function() {
     }
 };
 
+$('#chatBox').keypress(function(event){
+ 
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        $('#send').get(0).click();  
+    }
+ 
+});
+
 /* Chat system via socket.io */
 
 // Create a socket
@@ -163,6 +172,11 @@ angrymonkey.initChat();
 /* Chat wrapper code */
 
 $("#chatMessageBoxWrapper").dialog({
+   dialogClass: 'transparent_class', 
+   minHeight: 223,
+   minWidth:376,
    closeOnEscape: false,
    open: function(event, ui) { $(".ui-dialog-titlebar-close", ui.dialog || ui).hide(); }
 });;
+
+$("#chatMessageBoxWrapper").dialog("option","position", ["left","bottom"] );
