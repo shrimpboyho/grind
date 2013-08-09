@@ -6,7 +6,8 @@ toastr.info('Welcome to Grind')
 
 /* Globals */
 
-var newlyn = new player(nameGiven);
+var client = new player(nameGiven);
+var world;
 enterGameLoop();
 
 function enterGameLoop() {
@@ -18,7 +19,7 @@ function enterGameLoop() {
         $("canvas").clearCanvas();
 
         // Draw stuff
-        newlyn.draw();
+        client.draw();
 
     }, 50);
 
@@ -83,19 +84,19 @@ document.onkeydown = function() {
     switch (window.event.keyCode) {
         // left key
         case 37:
-            newlyn.setX(newlyn.getX() - 5);
+            client.setX(client.getX() - 5);
             break;
             // up key
         case 38:
-            newlyn.setY(newlyn.getY() - 5);
+            client.setY(client.getY() - 5);
             break;
             // right key
         case 39:
-            newlyn.setX(newlyn.getX() + 5);
+            client.setX(client.getX() + 5);
             break;
             // down key
         case 40:
-            newlyn.setY(newlyn.getY() + 5);
+            client.setY(client.getY() + 5);
             break;
     }
 };
@@ -121,7 +122,7 @@ angrymonkey = new blackmonkey();
 
 angrymonkey.setSocket(socket);
 
-angrymonkey.setUserId(newlyn.username);
+angrymonkey.setUserId(client.username);
 
 
 angrymonkey.onNewMessage(function(data) {
@@ -195,3 +196,23 @@ $("#chatMessageBoxWrapper").dialog({
 });;
 
 $("#chatMessageBoxWrapper").dialog("option", "position", ["left", "bottom"]);
+
+/* GAME WORLD MULTIPLAYER CODE */
+
+socket.on('firstConnectionLoad', function(data) {
+    console.log("RECIEVED FIRST LOAD: " + data);
+
+    // Set world on first connection
+    world = data.world;
+
+    // Get a copy of the new world every time it changes
+    socket.on('newWorldLoad', function(data) {
+        world = data.world;
+    });
+});
+
+
+/* Sends the updated world to the server */
+function emitUpdatedWorld(){
+    socket.emit('worldUpdate', {world: world});
+}
