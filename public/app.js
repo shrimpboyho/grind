@@ -103,6 +103,7 @@ document.onkeydown = function() {
 
 $('#chatBox').keypress(function(event) {
 
+    // Enter key press
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if (keycode == '13') {
         $('#send').get(0).click();
@@ -193,7 +194,15 @@ $("#chatMessageBoxWrapper").dialog({
     open: function(event, ui) {
         $(".ui-dialog-titlebar-close", ui.dialog || ui).hide();
     }
-});;
+});
+
+$("#chatMessageBoxWrapper").mouseenter(function(){
+    $("#chatMessageBoxWrapper").dialog({dialogClass : 'nontransparent_class'});
+});
+
+$("#chatMessageBoxWrapper").mouseleave(function(){
+    $("#chatMessageBoxWrapper").dialog({dialogClass : 'transparent_class'});
+});
 
 $("#chatMessageBoxWrapper").dialog("option", "position", ["left", "bottom"]);
 

@@ -31,6 +31,15 @@
         opacity: 0.5;
 
     }
+
+    .nontransparent_class {
+        filter:alpha(opacity=75); /* for IE4 - IE7 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* IE8 */
+        -moz-opacity:0.75;
+        -khtml-opacity: 0.75;
+        opacity: 0.75;
+
+    }
 	</style>
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"></link>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/1.3.1/css/toastr.min.css"></link>
@@ -41,8 +50,6 @@
 
 	<canvas></canvas>
 	
-	
-
 	<div id="chatMessageBoxWrapper">  	
 	  	<textarea style = "cursor: default;"id = "chatMessageBox" readonly></textarea>
 	  	<input id = "chatBox"></input>
